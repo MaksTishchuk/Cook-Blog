@@ -5,6 +5,8 @@ from .models import Post
 
 
 class HomeView(ListView):
+    """View для главной страницы"""
+
     model = Post
     paginate_by = 9
     template_name = 'blog/home.html'
