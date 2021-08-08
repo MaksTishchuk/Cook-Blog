@@ -13,6 +13,8 @@ class RecipeInLIne(admin.StackedInline):
 class PostAdmin(admin.ModelAdmin):
     list_display = ['id', 'author', 'title', 'category', 'create_at']
     inlines = [RecipeInLIne]
+    save_as = True
+    save_on_top = True
 
 
 @admin.register(models.Recipe)
