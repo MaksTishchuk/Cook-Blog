@@ -2574,6 +2574,10 @@ ol {
 /*---------------------
   Contact
 -----------------------*/
+.contact_icon {
+	max-width: 30px; //ширина
+    max-height: 30px; //высота
+}
 
 .contact {
 	padding-top: 0;
