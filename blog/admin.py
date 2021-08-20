@@ -22,7 +22,11 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'post', 'prep_time', 'cook_time']
 
 
+@admin.register(models.Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'website', 'create_at', 'id']
+
+
 # MPTTModelAdmin позволяет сделать сдвиг вправо в админке для подкатегорий для наглядности
 admin.site.register(models.Category, MPTTModelAdmin)
 admin.site.register(models.Tag)
-admin.site.register(models.Comment)
