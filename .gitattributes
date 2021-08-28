@@ -3,3 +3,4 @@
 static/* linguist-vendored
 jquery.js linguist-vendored=false
 *.css linguist-detectable=false
+*.scss linguist-detectable=false
