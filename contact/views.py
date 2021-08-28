@@ -12,7 +12,7 @@ class ContactView(View):
     def get(self, request):
         contacts = ContactLink.objects.all()
         form = ContactForm
-        return render(request, 'contact/contact.html', context={'contacts': contacts,'form': form})
+        return render(request, 'contact/contact.html', context={'contacts': contacts, 'form': form})
 
 
 class CreateFeedback(CreateView):

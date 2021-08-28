@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load social_tags %}
+{% load cache %}
+
+{% block title %}
+  <title>{{ post.title }}</title>
+{% endblock title %}
 
 {% block content %}
 
@@ -29,7 +34,7 @@
                     {% get_social_links as social_links %}
                     {% for item in social_links %}
                     <a href="{{ item.link }}">
-                        <img class="contact_icon"src="{{ item.icon.url }}">
+                        <img class="contact_icon" src="{{ item.icon.url }}">
                     </a>
                     {% endfor %}
                 </div>
@@ -52,8 +57,6 @@
                                 <h5><i class="fa fa-clock-o"></i> Cook TIME</h5>
                                 <span>{{ recipe.cook_time }}</span>
                             </li>
-                            <li><a href="#" class="primary-btn"><i class="fa fa-print"></i> Read
-                                more</a></li>
                         </ul>
                     </div>
 
@@ -71,41 +74,14 @@
                 <div class="single-post__desc">
                     <p>{{ post.text }}</p>
                 </div>
+
                 <div class="single-post__tags">
                     {% for tag in post.tags.all %}
                     <a href="#">{{ tag.name }}</a>
                     {% endfor %}
                 </div>
-                <div class="single-post__next__previous">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <a href="#" class="single-post__previous">
-                                <h6><span class="arrow_carrot-left"></span> Previous posts</h6>
-                                <div class="single-post__previous__meta">
-                                    <h4>08</h4>
-                                    <span>Aug</span>
-                                </div>
-                                <div class="single-post__previous__text">
-                                    <span>Dinner</span>
-                                    <h5>The Best Weeknight Baked <br/>Potatoes, 3 Creative Ways</h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <a href="#" class="single-post__next">
-                                <h6>Next posts <span class="arrow_carrot-right"></span></h6>
-                                <div class="single-post__next__meta">
-                                    <h4>05</h4>
-                                    <span>Aug</span>
-                                </div>
-                                <div class="single-post__next__text">
-                                    <span>Smoothie</span>
-                                    <h5>The $8 French Rosé I Buy in <br/>Bulk Every Summer</h5>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
+                {% cache 5000 get_about_detail %}
                 {% get_about as about %}
                 <div class="single-post__author__profile">
                     <div class="single-post__author__profile__pic">
@@ -122,6 +98,8 @@
                         </div>
                     </div>
                 </div>
+                {% endcache %}
+
                 <div class="single-post__comment">
                     <div class="widget__title">
                         <h4>{{ post.get_comments.count }} Comments</h4>

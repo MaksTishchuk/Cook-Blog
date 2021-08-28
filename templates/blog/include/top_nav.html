@@ -1,11 +1,14 @@
 {% load menu_tags %}
+{% load cache %}
 
 <nav class="header__menu">
-  <ul>
-    <li class="active"><a href="/">Main Page</a></li>
-    {% get_last_posts %}
-    {% get_categories %}
-    <li><a href="{% url 'about' %}">About Us</a></li>
-    <li><a href="{% url 'contact' %}">Contacts</a></li>
-  </ul>
+    <ul>
+        <li><a href="/">Main Page</a></li>
+        {% cache 5000 top_nav_cache %}
+        {% get_last_posts %}
+        {% get_categories %}
+        {% endcache %}
+        <li><a href="{% url 'about' %}">About Me</a></li>
+        <li><a href="{% url 'contact' %}">Contacts</a></li>
+    </ul>
 </nav>

@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load social_tags %}
-{% block content %}
 
+{% block title %}
+  <title>About Me</title>
+{% endblock title %}
+
+{% block content %}
 <section class="about spad">
   <div class="container">
     <div class="about__text">
@@ -10,7 +14,7 @@
           <div class="breadcrumb__text">
             <h2>About me</h2>
             <div class="breadcrumb__option">
-              <a href="#">Home</a>
+              <a href="/">Home</a>
               <span>About</span>
             </div>
           </div>

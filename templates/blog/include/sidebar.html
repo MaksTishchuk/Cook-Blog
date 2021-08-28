@@ -1,5 +1,7 @@
 {% load social_tags %}
+{% load cache %}
 
+{% cache 500 sidebar_cache %}
 <div class="col-lg-4 col-md-4">
     <div class="sidebar__item">
         <div class="sidebar__about__item">
@@ -23,30 +25,13 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="sidebar__item__banner">
-            <img src="/static/img/sidebar/banner.jpg" alt="">
-        </div>
+
         <div class="sidebar__item__categories">
             <div class="sidebar__item__title">
                 <h6>Categories</h6>
             </div>
             {% include './sidebar_category.html' %}
-
-        </div>
-        <div class="sidebar__subscribe__item">
-            <div class="sidebar__item__title">
-                <h6>Subscribe</h6>
-            </div>
-            <p>Subscribe to our newsletter and get our newest updates right on your inbox.</p>
-            <form action="#">
-                <input type="text" class="email-input" placeholder="Your email">
-                <label for="s-agree-check">
-                    I agree to the terms & conditions
-                    <input type="checkbox" id="s-agree-check">
-                    <span class="checkmark"></span>
-                </label>
-                <button type="submit" class="site-btn">Subscribe</button>
-            </form>
         </div>
     </div>
 </div>
+{% endcache %}

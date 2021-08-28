@@ -12,16 +12,21 @@ class HomeView(ListView):
     paginate_by = 9
     template_name = 'blog/home.html'
 
+    def get_queryset(self):
+        return Post.objects.all().select_related('category', 'author').prefetch_related(
+            'comment').order_by('-id')
+
 
 class PostListView(ListView):
     """View для постов"""
 
     model = Post
+    paginate_by = 6
 
     def get_queryset(self):
-        return Post.objects.select_related('category').filter(
+        return Post.objects.filter(
             category__slug=self.kwargs.get('slug')
-        )
+        ).select_related('category', 'author').prefetch_related('comment').order_by('-id')
 
 
 class PostDetailView(DetailView):
@@ -35,6 +40,11 @@ class PostDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['form'] = CommentForm
         return context
+
+    def get_queryset(self):
+        slug = self.kwargs.get('post_slug', '')
+        q = super().get_queryset()
+        return q.filter(slug=slug).select_related('category', 'author').prefetch_related('comment')
 
 
 class CreateComment(CreateView):

@@ -395,7 +395,7 @@ ol {
 	position: absolute;
 	left: 0;
 	top: 62px;
-	width: 180px;
+	width: 200px;
 	background: #222222;
 	z-index: 9;
 	text-align: left;
@@ -408,25 +408,26 @@ ol {
 }
 
 .header__menu ul li .children {
-	position: absolute;
+
 	left: 100px;
-	top: 62px;
+	top: 20px;
 	width: 180px;
 	background: #222222;
 	z-index: 9;
 	text-align: left;
+	margin-left: 15px;
 	-webkit-transition: all, 0.3s;
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
 	opacity: 0;
 	visibility: hidden;
-	padding: 10px 0;
+
 }
 
 .header__menu ul li:hover .children {
 	opacity: 1;
 	visibility: visible;
-	top: 41px;
+	top: 20px;
 }
 
 .header__menu ul li .dropdown__menu li {
@@ -765,7 +766,8 @@ ol {
 
 .hero__inside__item {
 	position: relative;
-	height: 633px;
+	height: 400px;
+	width: 500px;
 	margin-bottom: 11px;
 	margin-right: 11px;
 }
@@ -1099,8 +1101,11 @@ ol {
 }
 
 .categories__post__item__pic.small__item {
-	height: 253px;
+	width: 100%; /* Ширина */
+	border-radius: 10px;
 }
+
+
 
 .categories__post__item__pic.smaller__large {
 	height: 380px;
@@ -2431,7 +2436,7 @@ ol {
 }
 
 .footer__text {
-	padding: 50px 0;
+	padding: 10px 0;
 	text-align: center;
 }
 
