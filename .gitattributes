@@ -2,3 +2,4 @@
 *.js linguist-language=Python
 static/* linguist-vendored
 jquery.js linguist-vendored=false
+*.css linguist-detectable=false
